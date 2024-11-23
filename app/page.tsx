@@ -2,7 +2,7 @@
 
 import NavigationHeader from "@/components/ui/NavigationHeader";
 import Map from "@/components/map";
-
+import UploadAndHashImage from "@/components/UploadAndHashImage"
 
 export default function Home() {
   return (
@@ -14,6 +14,9 @@ export default function Home() {
       <div className="flex justify-center mt-10">
         <Map />
       </div>
+      <div>
+				<UploadAndHashImage /> 
+			</div>
     </div>
   );
 }
