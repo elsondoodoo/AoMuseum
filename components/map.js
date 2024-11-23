@@ -162,9 +162,12 @@ const Map = () => {
             }}
             className="border rounded px-2 py-1"
           />
-          <button onClick={handleSearch} className="border rounded px-2 py-1">
-            Search
-          </button>
+        <button
+        onClick={handleSearch}
+        className="border rounded px-2 py-1 transition-colors duration-200 hover:text-[#ff6700]"
+        >
+        Search
+        </button>
         </div>
         <div>
         {suggestions.length > 0 && (
