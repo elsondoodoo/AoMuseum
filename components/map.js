@@ -173,7 +173,16 @@ const Map = () => {
         </ul>
         )}
         </div>
-        <div id="mapContainer" style={{ width: '100%', height: '400px' }}></div>
+        <div
+            id="mapContainer"
+            style={{
+                width: '100%',
+                height: '400px',
+                marginTop: '10px',
+                borderRadius: '10px', // Adjust the radius as needed
+                overflow: 'hidden', // Ensures the map respects the rounded corners
+            }}
+        ></div>
       </CardContent>
       {/* we can add in pins later 
       <CardFooter>

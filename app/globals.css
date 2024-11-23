@@ -60,13 +60,23 @@ body {
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
   }
-}
 
-@layer base {
   * {
     @apply border-border;
   }
   body {
     @apply bg-background text-foreground;
+  }
+
+  .suggestions-list {
+    @apply bg-card border border-border rounded shadow-lg list-none p-0 mt-2 w-full max-w-none;
+  }
+  
+  .suggestions-list li {
+    @apply px-4 py-2 cursor-pointer hover:bg-muted hover:text-primary-foreground transition-colors;
+  }
+
+  .suggestions-list li:not(:last-child) {
+    @apply border-b border-border;
   }
 }
