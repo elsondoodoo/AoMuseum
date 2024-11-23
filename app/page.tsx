@@ -11,7 +11,7 @@ export default function Home() {
         <NavigationHeader />
       </div>
 
-      <div className="flex justify-center">
+      <div className="flex justify-center mt-10">
         <Map />
       </div>
     </div>

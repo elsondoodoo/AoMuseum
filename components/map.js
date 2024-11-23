@@ -13,29 +13,8 @@ const Map = () => {
     const [suggestions, setSuggestions] = useState([]);
     const [markers, setMarkers] = useState([]);
 
-    // Define preset pins
-    const presetPins = [
-        {
-            lng: -122.50089000000003,
-            lat: 37.784229999999994,
-            name: 'Legion of Honor, 100 34th Ave, San Francisco, California 94121, United States',
-        },
-        {
-            lng: -0.126700000000028,
-            lat: 51.51923199999999,
-            name: 'British Museum, Great Russell St, London, England WC1E 7JW, United Kingdom',
-        },
-        {
-            lng: 2.3360962208009823,
-            lat: 48.86139819412929,
-            name: 'Palais Royal, Place du Palais Royal, Paris, Île-de-France 75001, France',
-        },
-        {
-            lng: -118.47495100000003,
-            lat: 34.07772899999999,
-            name: 'J. Paul Getty Museum, 1200 Getty Center Dr, Los Angeles, California 90049, United States',
-        },
-    ];
+    // we can put our pins here
+    const presetPins = []
 
     useEffect(() => {
         const newMap = new mapboxgl.Map({
