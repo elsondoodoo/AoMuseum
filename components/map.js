@@ -22,6 +22,7 @@ const Map = () => {
             style: 'mapbox://styles/mapbox/dark-v11', // Map style
             center: [-122.4194, 37.7749], // Default center (San Francisco)
             zoom: 10, // Default zoom level
+            attributionControl: false, // Disable attribution control
         });
         
 
@@ -138,18 +139,23 @@ const Map = () => {
 
     return (
         <div>
-            <input
-                type="text"
-                placeholder="Enter a location"
-                value={searchQuery}
-                onChange={handleSearchChange}
-                onKeyPress={(e) => {
-                    if (e.key === 'Enter') {
-                        handleSearch();
-                    }
-                }}
-                className="border rounded px-2 py-1"
-            />
+            <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '10px', gap: '5px' }}>
+                <input 
+                    type="text"
+                    placeholder="Enter a location"
+                    value={searchQuery}
+                    onChange={handleSearchChange}
+                    onKeyPress={(e) => {
+                        if (e.key === 'Enter') {
+                            handleSearch();
+                        }
+                    }}
+                    className="border rounded px-2 py-1"
+                />
+                <button onClick={handleSearch} className="border rounded px-2 py-1">
+                    Search
+                </button>
+            </div>
             {suggestions.length > 0 && (
                 <ul className="suggestions-list">
                     {suggestions.map((suggestion, index) => (
@@ -159,20 +165,6 @@ const Map = () => {
                     ))}
                 </ul>
             )}
-            <div style={{ display: 'flex', gap: '8px', marginTop: '10px' }}>
-                <button onClick={handleSearch} className="border rounded px-2 py-1">
-                    Search
-                </button>
-                <button onClick={handleAddPin} className="border rounded px-2 py-1">
-                    Add Pin
-                </button>
-                <button 
-                    onClick={handleClearPins} 
-                    style={{ backgroundColor: 'red', color: 'white', padding: '8px 16px', border: 'none', borderRadius: '4px' }}
-                >
-                    Clear Added Pins
-                </button>
-            </div>
             <div id="mapContainer" style={{ width: '100%', height: '400px' }}></div>
             {coordinates.lng && coordinates.lat && (
                 <div>
@@ -181,7 +173,8 @@ const Map = () => {
                     <p>Location: {locationName}</p>
                 </div>
             )}
-            <div>
+            {/* we can add saved locations later */}
+            {/* <div>
                 <h3>Saved Pins:</h3>
                 {pins.map((pin, index) => (
                     <div key={index}>
@@ -190,7 +183,7 @@ const Map = () => {
                         <p>Location: {pin.name}</p>
                     </div>
                 ))}
-            </div>
+            </div> */}
         </div>
     );
 };
