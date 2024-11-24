@@ -25,14 +25,16 @@ mapboxgl.accessToken = 'pk.eyJ1IjoibWFzb25hcmRpdGkiLCJhIjoiY20zNnprM2c5MGI3aDJrc
 // Define the PopupContent component
 const PopupContent = ({ pin }) => {
   const handleViewMuseum = () => {
-    // Define what happens when the button is clicked
-    // For example, navigate to a museum detail page or open a modal
     window.open(pin.url, '_blank'); // Opens the URL in a new tab
   };
 
   return (
     <div>
-      <h3 className="text-lg font-semibold">{pin.name}</h3>
+      <h3 className="text-lg font-semibold">
+        <a href="https://www.getty.edu/visit/villa/" target="_blank" rel="noopener noreferrer">
+          {pin.name}
+        </a>
+      </h3>
       <Button
         variant="default"
         size="sm"

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
-import { message, createDataItemSigner, result } from "@permaweb/aoconnect";
+//import { message, createDataItemSigner, result } from "@permaweb/aoconnect";
 
 const process_address = "UgfK0rO3yZIPv9z-Ni3Wr3TMpV9ghkOMK0nTZJ_EQsc";
 
