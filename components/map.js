@@ -22,9 +22,7 @@ const Map = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [coordinates, setCoordinates] = useState({ lng: null, lat: null });
   const [locationName, setLocationName] = useState('');
-  const [userPins, setUserPins] = useState([]);
   const [suggestions, setSuggestions] = useState([]);
-  const [userMarkers, setUserMarkers] = useState([]);
 
   // Preset pins are static and do not change
   const presetPins = [
@@ -61,47 +59,12 @@ const Map = () => {
         .setPopup(new mapboxgl.Popup().setText(pin.name))
         .addTo(newMap);
     });
-    
-
-    // Optional: Allow adding pins by clicking on the map
-    const handleMapClick = (e) => {
-      const { lng, lat } = e.lngLat;
-      const newPin = {
-        lng,
-        lat,
-        name: `Pinned Location (${lng.toFixed(4)}, ${lat.toFixed(4)})`,
-      };
-      addUserPin(newPin);
-    };
-
-    newMap.on('click', handleMapClick);
 
     // Cleanup on unmount
     return () => {
-      newMap.off('click', handleMapClick);
       newMap.remove();
     };
   }, [theme]); // Reinitialize map when theme changes
-
-  useEffect(() => {
-    // Load user pins from localStorage
-    const savedPins = JSON.parse(localStorage.getItem('userPins')) || [];
-    setUserPins(savedPins);
-
-    if (map) {
-      savedPins.forEach(pin => {
-        if (typeof pin.lng === 'number' && typeof pin.lat === 'number') {
-          const marker = new mapboxgl.Marker({ color: 'blue' })
-            .setLngLat([pin.lng, pin.lat])
-            .setPopup(new mapboxgl.Popup().setText(pin.name))
-            .addTo(map);
-          setUserMarkers(prevMarkers => [...prevMarkers, marker]);
-        } else {
-          console.error("Invalid pin data:", pin);
-        }
-      });
-    }
-  }, [map]);
 
   const handleSearchChange = async (e) => {
     const query = e.target.value;
@@ -150,41 +113,6 @@ const Map = () => {
     } catch (error) {
       console.error("Error during search:", error);
     }
-  };
-
-  const addUserPin = (pin) => {
-    setUserPins((prevPins) => {
-      const updatedPins = [...prevPins, pin];
-      localStorage.setItem('userPins', JSON.stringify(updatedPins));
-      return updatedPins;
-    });
-
-    const marker = new mapboxgl.Marker({ color: 'blue' })
-      .setLngLat([pin.lng, pin.lat])
-      .setPopup(new mapboxgl.Popup().setText(pin.name))
-      .addTo(map);
-    setUserMarkers(prevMarkers => [...prevMarkers, marker]);
-  };
-
-  const handleAddPin = () => {
-    if (locationName && coordinates.lng && coordinates.lat) {
-      const newPin = {
-        lng: coordinates.lng,
-        lat: coordinates.lat,
-        name: locationName,
-      };
-      addUserPin(newPin);
-    } else {
-      alert("Please search for a location first.");
-    }
-  };
-
-  const handleClearPins = () => {
-    // Remove user markers from the map
-    userMarkers.forEach(marker => marker.remove());
-    setUserMarkers([]);
-    setUserPins([]);
-    localStorage.removeItem('userPins');
   };
 
   return (
@@ -236,7 +164,6 @@ const Map = () => {
           }}
         ></div>
       </CardContent>
-
     </Card>
   );
 };
