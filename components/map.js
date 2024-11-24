@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useTheme } from "next-themes"; // Import useTheme
 import mapboxgl from 'mapbox-gl';
 import {
   Card,
@@ -12,6 +13,7 @@ import {
 mapboxgl.accessToken = 'pk.eyJ1IjoibWFzb25hcmRpdGkiLCJhIjoiY20zNnprM2c5MGI3aDJrcHNwcTlqc2tkYiJ9._ZXBwh8zhsRKp1hn1_b75A';
 
 const Map = () => {
+  const { theme } = useTheme(); // Get the current theme
   const [map, setMap] = useState(null);
   const [searchQuery, setSearchQuery] = useState('');
   const [coordinates, setCoordinates] = useState({ lng: null, lat: null });
@@ -25,7 +27,9 @@ const Map = () => {
   useEffect(() => {
     const newMap = new mapboxgl.Map({
       container: 'mapContainer',
-      style: 'mapbox://styles/mapbox/dark-v11',
+      style: theme === "dark" 
+        ? 'mapbox://styles/mapbox/dark-v11' 
+        : 'mapbox://styles/mapbox/light-v11', // Use theme to set the initial style
       center: [-122.4194, 37.7749],
       zoom: 10,
       attributionControl: false,
@@ -42,7 +46,7 @@ const Map = () => {
     });
 
     return () => newMap.remove();
-  }, []);
+  }, [theme]); // Reinitialize map when theme changes
 
   useEffect(() => {
     const savedPins = JSON.parse(localStorage.getItem('pins')) || [];
@@ -158,9 +162,12 @@ const Map = () => {
             }}
             className="border rounded px-2 py-1"
           />
-          <button onClick={handleSearch} className="border rounded px-2 py-1">
-            Search
-          </button>
+        <button
+        onClick={handleSearch}
+        className="border rounded px-2 py-1 transition-colors duration-200 hover:text-[#ff6700]"
+        >
+        Search
+        </button>
         </div>
         <div>
         {suggestions.length > 0 && (
@@ -173,17 +180,25 @@ const Map = () => {
         </ul>
         )}
         </div>
-        <div id="mapContainer" style={{ width: '100%', height: '400px' }}></div>
+        <div
+            id="mapContainer"
+            style={{
+                width: '100%',
+                height: '400px',
+                marginTop: '10px',
+                borderRadius: '10px', // Adjust the radius as needed
+                overflow: 'hidden', // Ensures the map respects the rounded corners
+            }}
+        ></div>
       </CardContent>
-      {/* we can add in pins later 
+      {/* we can add in pins later
       <CardFooter>
         <button onClick={handleAddPin} className="border rounded px-2 py-1">Add Pin</button>
         <button onClick={handleClearPins} className="border rounded px-2 py-1">Clear Pins</button>
-      </CardFooter> */}
+      </CardFooter>
+      */}
     </Card>
   );
 };
-
-
 
 export default Map;

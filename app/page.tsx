@@ -11,8 +11,10 @@ export default function Home() {
         <NavigationHeader />
       </div>
 
-      <div className="flex justify-center mt-10">
-        <Map />
+      <div className="flex justify-center ml-10 mr-10 mb-10">
+        <div className="w-full p-10">
+          <Map />
+        </div>
       </div>
       <div>
         <UploadDialog />
