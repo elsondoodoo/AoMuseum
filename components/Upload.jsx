@@ -11,12 +11,15 @@ import {
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import UploadAndHashImage from "@/components/UploadAndHashImage";
+import { useState } from 'react';
 
 export function UploadDialog() {
+  const [location, setLocation] = useState('');
+
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <div className="flex justify-center mt-5">
+        <div className="flex justify-center">
           <Button variant="secondary"> Upload </Button>
         </div>
       </DialogTrigger>
@@ -24,7 +27,7 @@ export function UploadDialog() {
         <DialogHeader>
           <DialogTitle>Upload Your Photo</DialogTitle>
           <DialogDescription>
-            Make changes to your profile here. Click save when you&aposre done.
+            Upload photos of the exhibition.
           </DialogDescription>
         </DialogHeader>
         <div className="grid gap-4 py-4">
@@ -32,7 +35,7 @@ export function UploadDialog() {
             <Label className="text-right">
               Location
             </Label>
-            <Input className="col-span-3" />
+            <Input className="col-span-3" value={location} onChange={(e) => setLocation(e.target.value)} />
           </div>
            <UploadAndHashImage/>
         </div>

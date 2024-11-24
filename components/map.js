@@ -12,6 +12,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+// import { ArweaveWalletKit, ConnectButton } from 'arweave-wallet-kit';
 
 // Set your Mapbox access token here
 mapboxgl.accessToken = 'pk.eyJ1IjoibWFzb25hcmRpdGkiLCJhIjoiY20zNnprM2c5MGI3aDJrcHNwcTlqc2tkYiJ9._ZXBwh8zhsRKp1hn1_b75A';
@@ -58,7 +59,7 @@ const Map = () => {
     presetPins.forEach(pin => {
       new mapboxgl.Marker({ color: ORANGE_COLOR }) // Use the defined orange color
         .setLngLat([pin.lng, pin.lat])
-        .setPopup(new mapboxgl.Popup().setText(pin.name))
+        .setPopup(new mapboxgl.Popup({ offset: 25 }).setText(pin.name).setDOMContent(document.createElement('div')).addTo(newMap))
         .addTo(newMap);
     });
     
