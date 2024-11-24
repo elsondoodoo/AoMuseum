@@ -2,7 +2,7 @@
 
 import NavigationHeader from "@/components/ui/NavigationHeader";
 import Map from "@/components/map";
-import UploadAndHashImage from "@/components/UploadAndHashImage"
+import { UploadDialog } from "@/components/Upload"
 
 export default function Home() {
   return (
@@ -12,12 +12,10 @@ export default function Home() {
       </div>
 
       <div className="flex justify-center mt-10">
-        <div style={{ width: '66.67%' }}>
-          <Map />
-        </div>
+        <Map />
       </div>
       <div>
-				<UploadAndHashImage /> 
+        <UploadDialog />
 			</div>
     </div>
   );
