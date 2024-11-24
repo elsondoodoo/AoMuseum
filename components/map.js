@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { useTheme } from "next-themes";
 import mapboxgl from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css'; // Import Mapbox CSS
+import ReactDOM from 'react-dom/client'; // Import ReactDOM for rendering React components into DOM nodes
 import {
   Card,
   CardContent,
@@ -12,9 +13,33 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { Button } from "@/components/ui/button"; // Import the shadcn Button component
 
 // Set your Mapbox access token here
 mapboxgl.accessToken = 'pk.eyJ1IjoibWFzb25hcmRpdGkiLCJhIjoiY20zNnprM2c5MGI3aDJrcHNwcTlqc2tkYiJ9._ZXBwh8zhsRKp1hn1_b75A';
+
+// Define the PopupContent component
+const PopupContent = ({ pin }) => {
+  const handleViewMuseum = () => {
+    // Define what happens when the button is clicked
+    // For example, navigate to a museum detail page or open a modal
+    window.open(pin.url, '_blank'); // Opens the URL in a new tab
+  };
+
+  return (
+    <div>
+      <h3 className="text-lg font-semibold">{pin.name}</h3>
+      <Button
+        variant="default"
+        size="sm"
+        onClick={handleViewMuseum}
+        className="mt-2"
+      >
+        View Museum
+      </Button>
+    </div>
+  );
+};
 
 const Map = () => {
   const { theme } = useTheme();
@@ -24,14 +49,15 @@ const Map = () => {
   const [locationName, setLocationName] = useState('');
   const [suggestions, setSuggestions] = useState([]);
 
-  // Preset pins are static and do not change
+  // Preset pins with URLs
   const presetPins = [
     {
       lat: 34.046614660503515, 
       lng: -118.56503246136992,
       name: 'Getty Villa',
+      url: 'https://www.getty.edu/visit/villa/',
     },
-    // Add more preset pins here if needed
+    // Add more preset pins with URLs here if needed
   ];
 
   useEffect(() => {
@@ -41,8 +67,8 @@ const Map = () => {
       style: theme === "dark" 
         ? 'mapbox://styles/mapbox/dark-v11' 
         : 'mapbox://styles/mapbox/light-v11', // Use theme to set the initial style
-      center: [-122.4194, 37.7749], // Initial center [lng, lat]
-      zoom: 10,
+      center: [-118.56503246136992, 34.046614660503515], // Centered on Getty Villa
+      zoom: 12,
       attributionControl: false,
     });
 
@@ -54,9 +80,20 @@ const Map = () => {
 
     // Add preset pins
     presetPins.forEach(pin => {
-      new mapboxgl.Marker({ color: ORANGE_COLOR }) // Use the defined orange color
+      // Create a DOM element for the popup
+      const popupNode = document.createElement('div');
+      // Initialize React root
+      const popupRoot = ReactDOM.createRoot(popupNode);
+      // Render the PopupContent component into the popupNode
+      popupRoot.render(<PopupContent pin={pin} />);
+
+      // Create the popup and set its content to the popupNode
+      const popup = new mapboxgl.Popup({ offset: 25 }).setDOMContent(popupNode);
+
+      // Create the marker and attach the popup
+      new mapboxgl.Marker({ color: ORANGE_COLOR })
         .setLngLat([pin.lng, pin.lat])
-        .setPopup(new mapboxgl.Popup().setText(pin.name))
+        .setPopup(popup)
         .addTo(newMap);
     });
 
@@ -104,7 +141,7 @@ const Map = () => {
       if (data.features && data.features.length > 0) {
         const [lng, lat] = data.features[0].center;
         setCoordinates({ lng, lat });
-        setLocationName(data.features[0].place_name);
+        setLocationName(data.features[0].place_name );
 
         map.flyTo({ center: [lng, lat], zoom: 12 });
       } else {
