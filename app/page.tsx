@@ -17,7 +17,6 @@ export default function Home() {
         </div>
       </div>
       <div className="flex justify-center ml-10 mr-10 mb-10">
-        <UploadDialog />
       </div>
       
     </div>
