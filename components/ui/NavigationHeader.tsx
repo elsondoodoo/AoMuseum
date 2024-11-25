@@ -46,7 +46,7 @@ const NavigationHeader: React.FC = () => {
                       <li>
                         <NavigationMenuLink asChild>
                           <Link
-                            href="/getty"
+                            href="/Getty"
                             className="block px-4 py-2 text-gray-700 hover:bg-gray-100 rounded whitespace-nowrap"
                           >
                             Getty Villa
