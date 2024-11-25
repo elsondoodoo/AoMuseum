@@ -16,11 +16,9 @@ import {
 import { UploadDialog } from "@/components/Upload"
 export default function Home() {
     return (
-        <div className="flex flex-col">
-            <div>
-                <NavigationHeader />
-            </div>
-            <div className="items-center">
+        <div className="flex flex-col items-center">
+            <NavigationHeader />
+            <div className="flex justify-center w-full mt-4">
                 <Carousel className="w-full max-w-xs">
                     <CarouselContent>
                         {Array.from({ length: 5 }).map((_, index) => (
@@ -39,8 +37,6 @@ export default function Home() {
                     <CarouselNext />
                 </Carousel>
             </div>
-            
-            <UploadDialog/>
         </div>
     );
 }
