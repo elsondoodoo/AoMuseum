@@ -206,10 +206,10 @@ const CarouselPrevious = React.forwardRef<
       variant={variant}
       size={size}
       className={cn(
-        "absolute  h-8 w-8 rounded-full",
+        "absolute h-8 w-8 rounded-full",
         orientation === "horizontal"
-          ? "-left-12 top-1/2 -translate-y-1/2"
-          : "-top-12 left-1/2 -translate-x-1/2 rotate-90",
+          ? "-left-4 top-1/2 -translate-y-1/2" // Adjusted from -left-12 to -left-4
+          : "-top-4 left-1/2 -translate-x-1/2 rotate-90", // Adjusted from -top-12 to -top-4
         className
       )}
       disabled={!canScrollPrev}
@@ -237,8 +237,8 @@ const CarouselNext = React.forwardRef<
       className={cn(
         "absolute h-8 w-8 rounded-full",
         orientation === "horizontal"
-          ? "-right-12 top-1/2 -translate-y-1/2"
-          : "-bottom-12 left-1/2 -translate-x-1/2 rotate-90",
+          ? "-right-4 top-1/2 -translate-y-1/2" // Adjusted from -right-12 to -right-4
+          : "-bottom-4 left-1/2 -translate-x-1/2 rotate-90", // Adjusted from -bottom-12 to -bottom-4
         className
       )}
       disabled={!canScrollNext}
@@ -251,6 +251,7 @@ const CarouselNext = React.forwardRef<
   )
 })
 CarouselNext.displayName = "CarouselNext"
+
 
 export {
   type CarouselApi,
