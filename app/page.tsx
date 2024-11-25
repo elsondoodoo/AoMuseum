@@ -16,8 +16,6 @@ export default function Home() {
           <Map />
         </div>
       </div>
-      <div className="flex justify-center ml-10 mr-10 mb-10">
-      </div>
       
     </div>
   );
