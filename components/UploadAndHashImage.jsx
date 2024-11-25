@@ -13,17 +13,17 @@ const UploadAndHashImage = () => {
 
   async function getNFTCount() {
     const response = await message({
-        process: process_address,
-        tags: [{ name: "Action", value: "GetNFTCount" }],
-        signer: createDataItemSigner(window.arweaveWallet),
-        data: userMessage
-    })
-    const r = await result({
-        message: response,
-        process: process_address
+      process: process_address,
+      tags: [{ name: "Action", value: "GetNFTCount" }],
+      signer: createDataItemSigner(window.arweaveWallet),
+      data: userMessage,
     });
-    setNFTCount(Number(r.Messages[0].Data))
-}
+    const r = await result({
+      message: response,
+      process: process_address,
+    });
+    setNFTCount(Number(r.Messages[0].Data));
+  }
 
   // Function to convert file to base64
   const convertToBase64 = (file) => {
@@ -71,10 +71,6 @@ const UploadAndHashImage = () => {
           }
         }}
       />
-      <Button onClick={getNFTCount()}>
-        Get NFT Count
-      </Button>
-      {NFTCount || ""}
     </div>
   );
 };

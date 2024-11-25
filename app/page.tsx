@@ -2,7 +2,6 @@
 
 import NavigationHeader from "@/components/ui/NavigationHeader";
 import Map from "@/components/map";
-import { UploadDialog } from "@/components/Upload"
 import Link from 'next/link';
 
 export default function Home() {

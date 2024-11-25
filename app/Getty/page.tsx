@@ -13,6 +13,7 @@ import {
 } from "@/components/ui/carousel"
 
 
+import { UploadDialog } from "@/components/Upload"
 export default function Home() {
     return (
         <div className="flex justify-center">
@@ -36,6 +37,7 @@ export default function Home() {
                 <CarouselPrevious />
                 <CarouselNext />
             </Carousel>
+            <UploadDialog/>
         </div>
     );
 }
