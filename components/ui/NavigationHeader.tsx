@@ -53,6 +53,26 @@ const NavigationHeader: React.FC = () => {
                           </Link>
                         </NavigationMenuLink>
                       </li>
+                      <li>
+                        <NavigationMenuLink asChild>
+                          <Link
+                            href="/Louvre"
+                            className="block px-4 py-2 text-gray-700 hover:bg-gray-100 rounded whitespace-nowrap"
+                          >
+                            Louvre Museum
+                          </Link>
+                        </NavigationMenuLink>
+                      </li>
+                      <li>
+                        <NavigationMenuLink asChild>
+                          <Link
+                            href="/Beijing"
+                            className="block px-4 py-2 text-gray-700 hover:bg-gray-100 rounded whitespace-nowrap"
+                          >
+                            National Museum of China
+                          </Link>
+                        </NavigationMenuLink>
+                      </li>
                     </ul>
                   </NavigationMenuContent>
                 </NavigationMenuItem>
