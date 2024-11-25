@@ -8,13 +8,11 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import UploadAndHashImage from "@/components/UploadAndHashImage";
-import { useState } from 'react';
+
+import UploadAndHashImage from "@/components/UploadAndHashImage"; 
 
 export function UploadDialog() {
-  const [location, setLocation] = useState('');
+
 
   return (
     <Dialog>
@@ -31,12 +29,6 @@ export function UploadDialog() {
           </DialogDescription>
         </DialogHeader>
         <div className="grid gap-4 py-4">
-          <div className="grid grid-cols-4 items-center gap-4">
-            <Label className="text-right">
-              Location
-            </Label>
-            <Input className="col-span-3" value={location} onChange={(e) => setLocation(e.target.value)} />
-          </div>
            <UploadAndHashImage/>
         </div>
         <DialogFooter>
