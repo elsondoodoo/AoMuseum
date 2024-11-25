@@ -25,7 +25,7 @@ mapboxgl.accessToken = 'pk.eyJ1IjoibWFzb25hcmRpdGkiLCJhIjoiY20zNnprM2c5MGI3aDJrc
 // Define the PopupContent component
 const PopupContent = ({ pin }) => {
   const handleViewMuseum = () => {
-    window.open(pin.url, '_blank'); // Opens the URL in a new tab
+    window.open('/Getty', '_self'); // This should redirect to app/pages/getty.tsx
   };
 
   return (
