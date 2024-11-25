@@ -8,11 +8,18 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog"
-
 import UploadAndHashImage from "@/components/UploadAndHashImage"; 
+import { useState } from "react";
+
+
 
 export function UploadDialog() {
+  const [base64Image, setBase64Image] = useState(null);
 
+  const handleImageConverted = (base64String) => {
+    setBase64Image(base64String);
+    console.log('Base64 in Upload:', base64String);
+  };
 
   return (
     <Dialog>
@@ -29,7 +36,7 @@ export function UploadDialog() {
           </DialogDescription>
         </DialogHeader>
         <div className="grid gap-4 py-4">
-           <UploadAndHashImage/>
+           <UploadAndHashImage onImageConverted={handleImageConverted}/>
         </div>
         <DialogFooter>
           <Button type="submit">Save changes</Button>

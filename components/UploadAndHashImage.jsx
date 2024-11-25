@@ -6,7 +6,7 @@ import Image from "next/image";
 
 const process_address = "UgfK0rO3yZIPv9z-Ni3Wr3TMpV9ghkOMK0nTZJ_EQsc";
 
-const UploadAndHashImage = () => {
+const UploadAndHashImage = ( { onImageConverted }) => {
   const [selectedImage, setSelectedImage] = useState(null);
   const [base64String, setBase64String] = useState(null);
   const [NFTCount, setNFTCount] = useState(0);
@@ -31,7 +31,7 @@ const UploadAndHashImage = () => {
     reader.onload = () => {
       const base64 = reader.result;
       setBase64String(base64);
-      console.log("Base64:", base64);
+      onImageConverted(base64);
     };
     reader.readAsDataURL(file);
   };
