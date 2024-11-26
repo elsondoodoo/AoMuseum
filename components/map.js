@@ -19,9 +19,11 @@ mapboxgl.accessToken = 'pk.eyJ1IjoibWFzb25hcmRpdGkiLCJhIjoiY20zNnprM2c5MGI3aDJrc
 
 // Define the PopupContent component
 const PopupContent = ({ pin }) => {
+  const { theme } = useTheme();
+
   return (
     <div>
-      <h3 className="text-lg font-semibold">
+      <h3 className={`text-lg font-semibold ${theme === 'dark' ? 'text-black' : 'text-orange-600'}`}>
         <a href={pin.url} target="_blank" rel="noopener noreferrer">
           {pin.name}
         </a>
