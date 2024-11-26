@@ -5,14 +5,14 @@ import Image from "next/image";
 
 const UploadAndHashImage = ( { onImageConverted }) => {
   const [selectedImage, setSelectedImage] = useState(null);
-  const [base64String, setBase64String] = useState(null);
+//   const [base64String, setBase64String] = useState(null);
 
   // Function to convert file to base64
   const convertToBase64 = (file) => {
     const reader = new FileReader();
     reader.onload = () => {
       const base64 = reader.result;
-      setBase64String(base64);
+    //   setBase64String(base64);
       onImageConverted(base64);
     };
     reader.readAsDataURL(file);
@@ -32,7 +32,7 @@ const UploadAndHashImage = ( { onImageConverted }) => {
             className="mt-4"
             onClick={() => {
               setSelectedImage(null);
-              setBase64String(null);
+            //   setBase64String(null);
             }}
           >
             Remove

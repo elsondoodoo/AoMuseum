@@ -41,8 +41,8 @@ const Map = () => {
   const { theme } = useTheme();
   const [map, setMap] = useState(null);
   const [searchQuery, setSearchQuery] = useState('');
-  const [coordinates, setCoordinates] = useState({ lng: null, lat: null });
-  const [locationName, setLocationName] = useState('');
+//   const [coordinates, setCoordinates] = useState({ lng: null, lat: null });
+//   const [locationName, setLocationName] = useState('');
   const [suggestions, setSuggestions] = useState([]);
 
   const presetPins = [
@@ -124,8 +124,8 @@ const Map = () => {
 
   const handleSuggestionClick = (suggestion) => {
     const [lng, lat] = suggestion.center;
-    setCoordinates({ lng, lat });
-    setLocationName(suggestion.place_name);
+    // setCoordinates({ lng, lat });
+    // setLocationName(suggestion.place_name);
     setSearchQuery(suggestion.place_name);
     setSuggestions([]);
 
@@ -140,8 +140,8 @@ const Map = () => {
       const data = await response.json();
       if (data.features && data.features.length > 0) {
         const [lng, lat] = data.features[0].center;
-        setCoordinates({ lng, lat });
-        setLocationName(data.features[0].place_name);
+        // setCoordinates({ lng, lat });
+        // setLocationName(data.features[0].place_name);
 
         map.flyTo({ center: [lng, lat], zoom: 12 });
       } else {
