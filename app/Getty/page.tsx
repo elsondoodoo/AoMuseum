@@ -119,7 +119,7 @@ export default function Home() {
             </div>
           </Carousel>
           <div className="mt-5">
-            <UploadDialog />
+            <UploadDialog location="Getty" />
 
           </div>
 

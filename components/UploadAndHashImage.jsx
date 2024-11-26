@@ -67,7 +67,7 @@ const UploadAndHashImage = ( { onImageConverted }) => {
           if (file) {
             setSelectedImage(file);
             convertToBase64(file);
-            console.log(base64String);
+            // console.log(base64String);
           }
         }}
       />
