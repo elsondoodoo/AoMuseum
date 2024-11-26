@@ -93,7 +93,7 @@ export default function Home() {
         </div>
 
         {/* Carousel Section */}
-        <div className="flex-1 max-w-md relative">
+        <div className="flex-1 max-w-lg relative">
           <Carousel className="w-full">
             <CarouselContent>
               {Array.from({ length: 5 }).map((_, index) => (
@@ -101,9 +101,7 @@ export default function Home() {
                   <div className="p-1">
                     <Card>
                       <CardContent className="flex aspect-square items-center justify-center p-6">
-                        <span className="text-4xl font-semibold">
-                          {index + 1}
-                        </span>
+                        <img src={`/images/getty${index + 1}.jpg`} alt={`Getty Image ${index + 1}`} className="w-full h-full object-cover" />
                       </CardContent>
                     </Card>
                   </div>
