@@ -2,28 +2,10 @@ import React, { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
-//import { message, createDataItemSigner, result } from "@permaweb/aoconnect";
-
-const process_address = "UgfK0rO3yZIPv9z-Ni3Wr3TMpV9ghkOMK0nTZJ_EQsc";
 
 const UploadAndHashImage = ( { onImageConverted }) => {
   const [selectedImage, setSelectedImage] = useState(null);
   const [base64String, setBase64String] = useState(null);
-  const [NFTCount, setNFTCount] = useState(0);
-
-  async function getNFTCount() {
-    const response = await message({
-      process: process_address,
-      tags: [{ name: "Action", value: "GetNFTCount" }],
-      signer: createDataItemSigner(window.arweaveWallet),
-      data: userMessage,
-    });
-    const r = await result({
-      message: response,
-      process: process_address,
-    });
-    setNFTCount(Number(r.Messages[0].Data));
-  }
 
   // Function to convert file to base64
   const convertToBase64 = (file) => {

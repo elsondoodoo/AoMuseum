@@ -15,7 +15,7 @@ import { message, createDataItemSigner, result } from "@permaweb/aoconnect";
 import { useToast } from "@/hooks/use-toast";
 import { ToastAction } from "@/components/ui/toast";
 
-const process_address = "OBMUE39XclAoRzW45ucNz6SiDLewP1BxYWik4A-4DZg";
+const process_address = "C327dTSLhngrVWiE08CMfEvGi1BFghGb1lhESMD8NjE";
 
 export function UploadDialog({ location }) {
     const { toast } = useToast();
