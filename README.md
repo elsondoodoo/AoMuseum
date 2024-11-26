@@ -1,4 +1,4 @@
-[![protocol.land](https://arweave.net/eZp8gOeR8Yl_cyH9jJToaCrt2He1PHr0pR4o-mHbEcY)](https://protocol.land/#/repository/kM9LoqqEDMdVru0tYqCXJZDOtFqEqzhy0AAVTTx3jzk)
+[![protocol.land](https://arweave.net/eZp8gOeR8Yl_cyH9jJToaCrt2He1PHr0pR4o-mHbEcY)](https://protocol.land/#/repository/dcf0ec72-2792-48eb-8962-a10b7877f027)
 
 # AoMuseum
 
