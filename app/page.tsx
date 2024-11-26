@@ -10,9 +10,7 @@ export default function Home() {
       <div>
         <NavigationHeader />
       </div>
-
-      <div>hello</div>
-
+      
       <div className="flex justify-center ml-10 mr-10">
         <div className="w-full p-10">
           <Map />
